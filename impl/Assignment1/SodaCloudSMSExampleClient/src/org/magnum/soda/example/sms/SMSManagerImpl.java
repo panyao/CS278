@@ -18,6 +18,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
+import android.util.Log;
 
 public class SMSManagerImpl implements SMSManager, SMSSender {
 
@@ -86,8 +87,10 @@ public class SMSManagerImpl implements SMSManager, SMSSender {
 	}
 	
 	public void received(SMS sms){
+		SMSEvent smsEvent = new SMSEvent(SMSEvent.EVENT_TYPE.SEND, sms);
+		
 		for(SMSListener l:listeners_){
-			
+			l.smsEvent(smsEvent);
 		}
 	}
 	
@@ -102,12 +105,16 @@ public class SMSManagerImpl implements SMSManager, SMSSender {
 	 */
 	@SodaAsync
 	public void send(String to, String msg) {
-		// TODO Auto-generated method stub
+		Log.d("sms","send " + to + " msg:" + msg);
+		
+		SmsManager mgr = SmsManager.getDefault();
+		mgr.sendTextMessage(to, null, msg, null, null);
 		
 	}
 	
 	
 	public void sendSMS(SMS sms) {
+		Log.d("sms","send " +sms.getTo() + " msg:" + sms.getContent());
 		SmsManager mgr = SmsManager.getDefault();
 		mgr.sendTextMessage(sms.getTo(), null, sms.getContent(), null, null);
 	}
