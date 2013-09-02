@@ -18,7 +18,7 @@ import org.junit.Test;
 public class DefaultFileManagerTest {
 
 	@Test
-	public void test() {
+	public void testExistWriteDelete() {
 		Path p = Paths.get("test");
 		DefaultFileManager manager = new DefaultFileManager(p);
 		try {
@@ -41,7 +41,7 @@ public class DefaultFileManagerTest {
 			
 			assertEquals(isSame, true);
 						
-			//test delete()
+			//test delete() and exist()
 			manager.delete(p);
 			assertFalse(manager.exists(p));
 			
