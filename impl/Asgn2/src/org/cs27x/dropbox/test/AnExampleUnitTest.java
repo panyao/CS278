@@ -17,7 +17,7 @@ import org.cs27x.dropbox.Dropbox;
 import org.cs27x.dropbox.DropboxProtocol;
 import org.cs27x.filewatcher.DropboxFileEventHandler;
 import org.cs27x.filewatcher.FileEvent;
-import org.cs27x.filewatcher.FileStates;
+import org.cs27x.filewatcher.FileStatesImpl;
 import org.junit.Test;
 
 /**
@@ -84,7 +84,7 @@ public class AnExampleUnitTest {
 		// and the real deal
 		DropboxFileEventHandler hdlr = new DropboxFileEventHandler(
 					new DefaultFileManager(Paths.get("test-data/working-dir")),
-					new FileStates(),
+					new FileStatesImpl(),
 					transport);
 		
 		Path p = Paths.get("some_test_path");

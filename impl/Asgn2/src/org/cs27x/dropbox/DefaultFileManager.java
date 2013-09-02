@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.FileTime;
 
 public class DefaultFileManager implements FileManager {
 
@@ -34,7 +35,12 @@ public class DefaultFileManager implements FileManager {
 			Files.delete(p);
 		}
 	}
-
+	
+	@Override
+	public FileTime getLastModifiedTime(Path p) throws IOException {
+		return Files.getLastModifiedTime(p);
+	}
+	
 	@Override
 	public Path resolve(String relativePathName) {
 		return rootDir_.resolve(relativePathName);
