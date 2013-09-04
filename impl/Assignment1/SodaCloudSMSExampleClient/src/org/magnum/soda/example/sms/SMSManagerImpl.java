@@ -7,7 +7,9 @@
 package org.magnum.soda.example.sms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.magnum.soda.proxy.SodaAsync;
 
@@ -23,7 +25,7 @@ import android.util.Log;
 public class SMSManagerImpl implements SMSManager, SMSSender {
 
 	private static final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
-	private List<SMSListener> listeners_  = new ArrayList<SMSListener>();
+	private Set<SMSListener> listeners_  = new HashSet<SMSListener>();
 
 
 	private static final String MESSAGES = "pdus";
