@@ -61,18 +61,20 @@ isDirSame
 
 echo Create folder in client
 mkdir $CLIENT_DIR/TestClient
+echo 'test folder' > $CLIENT_DIR/TestClient/inside.txt
 sleep 10
 isDirSame 
 
 echo Create folder in server
 mkdir $SERVER_DIR/TestServer
+echo 'test folder' > $SERVER_DIR/TestServer/inside.txt
 sleep 10
 isDirSame 
 
 
 sleep 10
 pkill java
-#rm -rf $SERVER_DIR
-#rm -rf $CLIENT_DIR
+rm -rf $SERVER_DIR
+rm -rf $CLIENT_DIR
 
 
